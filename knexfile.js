@@ -1,8 +1,8 @@
-require("dotenv").config();
+require("dotenv").config(); // Make sure dotenv is required at the top
 
 module.exports = {
   development: {
-    client: process.env.DB_CLIENT,
+    client: "pg",
     connection: {
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
