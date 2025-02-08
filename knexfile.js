@@ -17,7 +17,12 @@ module.exports = {
 
   production: {
     client: "pg",
-    connection: process.env.DATABASE_URL, // Use the DATABASE_URL for production
+    connection: {
+      connectionString: process.env.DATABASE_URL, // Use the DATABASE_URL for production
+      ssl: {
+        rejectUnauthorized: false, // This is required for Render and other cloud PostgreSQL services
+      },
+    },
     migrations: {
       directory: "./migrations",
     },
