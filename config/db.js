@@ -1,8 +1,9 @@
 const knex = require("knex");
-const config = require("../knexfile");
+require("dotenv").config();
 
-// Determine if we are in a production environment or development
-const environment = process.env.NODE_ENV || "development"; // Default to development if not set
-const db = knex(config[environment]); // Use the appropriate configuration based on the environment
+const db = knex({
+  client: "pg", // PostgreSQL client
+  connection: process.env.DATABASE_URL, // Use the DATABASE_URL from your environment variables
+});
 
-module.exports = db;
+module.exports = db; // Export the db instance to use in other parts of your backend code
