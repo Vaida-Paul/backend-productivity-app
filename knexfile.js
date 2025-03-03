@@ -1,14 +1,15 @@
-require("dotenv").config(); // Make sure dotenv is required at the top
+require("dotenv").config();
 
 module.exports = {
   development: {
     client: "pg",
     connection: {
-      host: process.env.DB_HOST || "localhost", // Fallback to localhost if not set in .env
+      host: process.env.DB_HOST || "localhost",
       user: process.env.DB_USER || "postgres",
       password: process.env.DB_PASSWORD || "",
       database: process.env.DB_NAME || "postgres",
-      port: process.env.DB_PORT || 5432, // Default to 5432 if not set in .env
+      port: process.env.DB_PORT || 5432,
+      ssl: { rejectUnauthorized: false }, // Add SSL for development
     },
     migrations: {
       directory: "./migrations",
@@ -18,10 +19,8 @@ module.exports = {
   production: {
     client: "pg",
     connection: {
-      connectionString: process.env.DATABASE_URL, // Use the DATABASE_URL for production
-      ssl: {
-        rejectUnauthorized: false, // This is required for Render and other cloud PostgreSQL services
-      },
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
     },
     migrations: {
       directory: "./migrations",

@@ -11,6 +11,7 @@ const knexConfig = {
     password: process.env.DB_PASSWORD || "", // Fallback to empty string for dev
     database: process.env.DB_NAME || "postgres", // Fallback to 'postgres' for dev
     port: process.env.DB_PORT || 5432, // Default to port 5432
+    ssl: { rejectUnauthorized: false },
   },
   migrations: {
     directory: "./migrations", // Directory for migration files
