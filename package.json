@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js "
+    "start": "node server.js",
+    "migrate": "knex migrate:latest",
+    "postdeploy": "npm run migrate"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +20,8 @@
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
     "mongoose": "^8.9.5",
-    "pg": "^8.13.1",
+    "pg": "^8.14.0",
+    "psql": "^0.0.1",
     "sqlite3": "^5.1.7"
   }
 }
